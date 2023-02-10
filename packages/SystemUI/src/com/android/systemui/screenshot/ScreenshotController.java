@@ -1016,6 +1016,8 @@ public class ScreenshotController implements ScreenshotHandler {
                 } else {
                     mViewProxy.setChipIntents(imageData);
                 }
+                mNotificationsController.showPostActionNotification(
+                    imageData, mScreenBitmap);
             });
         }
     }
