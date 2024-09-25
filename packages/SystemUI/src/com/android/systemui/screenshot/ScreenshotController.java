@@ -943,6 +943,8 @@ public class ScreenshotController implements ScreenshotHandler {
                 if (result.uri != null) {
                     mActionsController.setCompletedScreenshot(requestId, new ScreenshotSavedResult(
                             result.uri, screenshot.getUserOrDefault(), result.timestamp));
+                    mNotificationsController.showPostActionNotification(
+                            result.uri, mScreenBitmap);
                 }
                 if (DEBUG_CALLBACK) {
                     Log.d(TAG, "finished background processing, Calling (Consumer<Uri>) "
@@ -1016,8 +1018,6 @@ public class ScreenshotController implements ScreenshotHandler {
                 } else {
                     mViewProxy.setChipIntents(imageData);
                 }
-                mNotificationsController.showPostActionNotification(
-                    imageData, mScreenBitmap);
             });
         }
     }
